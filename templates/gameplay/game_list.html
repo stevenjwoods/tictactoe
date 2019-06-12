@@ -1,0 +1,10 @@
+<!-- game_list.html is default title for html page for ListView where model = Game-->
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="well col-sm-6">
+        <h3>All games:</h3>
+        <!--object_list is a variable that ListView automagically creates-->
+        {% include "player/game_list_snippet.html" with games_list=object_list %}
+    </div>
+{% endblock content %}
