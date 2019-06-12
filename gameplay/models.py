@@ -73,11 +73,22 @@ class Game(models.Model):
     def _get_game_status_after_move(self, move):
         x, y = move.x, move.y
         board = self.board()
-        if ((board[y][0] == board[y][1] == board[y][2]) or \
-            (board[0][x] == board[1][x] == board[2][x]) or \
-            (board[0][0] == board[1][1] == board[2][2]) or \
-            (board[0][2] == board[1][1] == board[2][0])):
-            return 'W' if move.by_first_player else "L"
+        if board[y][0]:
+            if board[y][0] == board[y][1] == board[y][2]:
+                return 'W' if move.by_first_player else "L"
+        if board[0][x]:
+            if board[0][x] == board[1][x] == board[2][x]
+                return 'W' if move.by_first_player else "L"
+        if board[1][1]:
+            if board[0][0] == board[1][1] == board[2][2]:
+                return 'W' if move.by_first_player else "L"
+            elif board[0][2] == board[1][1] == board[2][0]:
+                return 'W' if move.by_first_player else "L"
+        # if ((board[y][0] == board[y][1] == board[y][2]) or \
+        #     (board[0][x] == board[1][x] == board[2][x]) or \
+        #     (board[0][0] == board[1][1] == board[2][2]) or \
+        #     (board[0][2] == board[1][1] == board[2][0])):
+        #     return 'W' if move.by_first_player else "L"
         if self.move_set.count() >= 3**2:
             return 'D'
         return 'S' if self.status == 'F' else 'F'
