@@ -77,7 +77,7 @@ class Game(models.Model):
             if board[y][0] == board[y][1] == board[y][2]:
                 return 'W' if move.by_first_player else "L"
         if board[0][x]:
-            if board[0][x] == board[1][x] == board[2][x]
+            if board[0][x] == board[1][x] == board[2][x]:
                 return 'W' if move.by_first_player else "L"
         if board[1][1]:
             if board[0][0] == board[1][1] == board[2][2]:
